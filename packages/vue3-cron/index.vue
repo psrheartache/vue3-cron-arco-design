@@ -569,7 +569,7 @@ export default defineComponent({
             minutes = '*'
             break
           case '2':
-            minutes = `${state.minute.incrementStart} / ${state.minute.incrementIncrement}`
+            minutes = `${state.minute.incrementStart}/${state.minute.incrementIncrement}`
             break
           case '3':
             state.minute.specificSpecific.forEach((val) => {
@@ -614,9 +614,8 @@ export default defineComponent({
           case '1':
             break
           case '2':
-            break
           case '4':
-            break
+          case '8':
           case '11':
             days = '?'
             break
@@ -635,9 +634,9 @@ export default defineComponent({
           case '7':
             days = 'LW'
             break
-          case '8':
-            days = `${state.day.cronLastSpecificDomDay}L`
-            break
+          // case '8':
+          //   days = `${state.day.cronLastSpecificDomDay}L`
+          //   break
           case '9':
             days = `L-${state.day.cronDaysBeforeEomMinus}`
             break
@@ -652,13 +651,6 @@ export default defineComponent({
         let weeks = ''
         const { cronEvery } = state.day
         switch (cronEvery.toString()) {
-          case '1':
-            break
-          case '3':
-            break
-          case '5':
-            weeks = '?'
-            break
           case '2':
             weeks = `${state.week.incrementStart}/${state.week.incrementIncrement}`
             break
@@ -668,16 +660,17 @@ export default defineComponent({
             })
             weeks = weeks.slice(0, -1)
             break
+          case '1':
+          case '3':
+          case '5':
           case '6':
-            break
           case '7':
-            break
-          case '8':
-            break
           case '9':
-            break
           case '10':
             weeks = '?'
+            break
+          case '8':
+            weeks = `${state.day.cronLastSpecificDomDay}L`
             break
           case '11':
             weeks = `${state.week.cronNthDayDay}#${state.week.cronNthDayNth}`
@@ -717,7 +710,7 @@ export default defineComponent({
             years = '*'
             break
           case '2':
-            years = `${state.year.incrementStart} / ${state.year.incrementIncrement}`
+            years = `${state.year.incrementStart}/${state.year.incrementIncrement}`
             break
           case '3':
             state.year.specificSpecific.forEach((val) => {
